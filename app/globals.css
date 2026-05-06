@@ -2,6 +2,11 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans), var(--font-noto-thai);
+  --color-navy: #1E2761;
+  --color-navy-dark: #0D1440;
+  --color-navy-deep: #080E2D;
+  --color-teal: #02C39A;
+  --color-orange: #CC785C;
 }
 
 @keyframes spotlight {

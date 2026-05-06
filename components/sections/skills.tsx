@@ -16,7 +16,7 @@ export function Skills() {
   const tr = t[lang].skills
 
   return (
-    <section id="skills" className="bg-neutral-950 py-28">
+    <section id="skills" className="py-28" style={{ backgroundColor: '#1E2761' }}>
       <div className="container max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ export function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-violet-400 text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium tracking-widest uppercase mb-3" style={{ color: '#02C39A' }}>
             {tr.label}
           </p>
           <h2 className="text-4xl font-bold text-white">{tr.heading}</h2>
@@ -39,15 +39,16 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: ci * 0.1 }}
-              className="p-6 rounded-2xl border border-white/5 bg-white/[0.02]"
+              className="p-6 rounded-2xl border border-white/10"
+              style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}
             >
-              <p className="text-violet-400 text-xs font-semibold tracking-widest uppercase mb-5">
+              <p className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: ci % 2 === 0 ? '#02C39A' : '#CC785C' }}>
                 {lang === 'th' ? cat.thLabel : cat.label}
               </p>
               <ul className="space-y-2.5">
                 {cat.skills.map((s) => (
                   <li key={s} className="flex items-center gap-2.5 text-neutral-300 text-sm">
-                    <span className="w-1 h-1 rounded-full bg-violet-500 shrink-0" />
+                    <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: ci % 2 === 0 ? '#02C39A' : '#CC785C' }} />
                     {s}
                   </li>
                 ))}

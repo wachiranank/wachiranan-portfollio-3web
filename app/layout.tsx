@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${notoThai.variable} scroll-smooth`}>
-      <body className="bg-black text-white antialiased">
+      <body className="bg-navy-deep text-white antialiased" style={{ backgroundColor: '#080E2D' }}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

@@ -17,7 +17,7 @@ export function Contact() {
   const tr = t[lang].contact
 
   return (
-    <section id="contact" className="bg-black py-28">
+    <section id="contact" className="py-28" style={{ backgroundColor: '#0D1440' }}>
       <div className="container max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <p className="text-violet-400 text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium tracking-widest uppercase mb-3" style={{ color: '#CC785C' }}>
             {tr.label}
           </p>
           <h2 className="text-4xl font-bold text-white mb-6">{tr.heading}</h2>
@@ -34,7 +34,8 @@ export function Contact() {
 
           <a
             href="mailto:wachiranan.khanngern@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors text-lg mb-12"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-lg mb-12 hover:opacity-80 transition-opacity"
+            style={{ backgroundColor: '#02C39A', color: '#080E2D' }}
           >
             <Mail size={18} />
             {tr.cta}
