@@ -1,27 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLang } from '@/lib/language-context'
+import { t } from '@/lib/i18n'
 
 const categories = [
-  {
-    label: 'Frontend',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-  },
-  {
-    label: 'UI & Design',
-    skills: ['Figma', 'shadcn/ui', 'Radix UI', 'GSAP', 'Spline'],
-  },
-  {
-    label: 'Tooling',
-    skills: ['Bun', 'Vite', 'ESLint', 'Prettier', 'Vercel'],
-  },
-  {
-    label: 'Backend basics',
-    skills: ['Node.js', 'REST APIs', 'Prisma', 'PostgreSQL', 'Supabase'],
-  },
+  { label: 'Frontend', thLabel: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
+  { label: 'UI & Design', thLabel: 'UI & ดีไซน์', skills: ['Figma', 'shadcn/ui', 'Radix UI', 'GSAP', 'Spline'] },
+  { label: 'Tooling', thLabel: 'เครื่องมือ', skills: ['Bun', 'Vite', 'ESLint', 'Prettier', 'Vercel'] },
+  { label: 'Backend basics', thLabel: 'แบ็กเอนด์เบื้องต้น', skills: ['Node.js', 'REST APIs', 'Prisma', 'PostgreSQL', 'Supabase'] },
 ]
 
 export function Skills() {
+  const { lang } = useLang()
+  const tr = t[lang].skills
+
   return (
     <section id="skills" className="bg-neutral-950 py-28">
       <div className="container max-w-6xl mx-auto px-6">
@@ -33,9 +26,9 @@ export function Skills() {
           className="text-center mb-16"
         >
           <p className="text-violet-400 text-sm font-medium tracking-widest uppercase mb-3">
-            Expertise
+            {tr.label}
           </p>
-          <h2 className="text-4xl font-bold text-white">Skills & tools</h2>
+          <h2 className="text-4xl font-bold text-white">{tr.heading}</h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -49,7 +42,7 @@ export function Skills() {
               className="p-6 rounded-2xl border border-white/5 bg-white/[0.02]"
             >
               <p className="text-violet-400 text-xs font-semibold tracking-widest uppercase mb-5">
-                {cat.label}
+                {lang === 'th' ? cat.thLabel : cat.label}
               </p>
               <ul className="space-y-2.5">
                 {cat.skills.map((s) => (

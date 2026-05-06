@@ -2,43 +2,29 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, GitBranch } from 'lucide-react'
+import { useLang } from '@/lib/language-context'
+import { t } from '@/lib/i18n'
 
-const projects = [
-  {
-    title: 'E-Commerce Platform',
-    description:
-      'A full-featured storefront with product filters, cart, and checkout — built for speed and conversion.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Stripe'],
-    gradient: 'from-violet-600/20 to-pink-600/20',
-    accent: 'bg-violet-500',
-  },
-  {
-    title: 'SaaS Dashboard',
-    description:
-      'Analytics-heavy admin panel with real-time charts, data tables, and role-based access.',
-    tags: ['React', 'Recharts', 'shadcn/ui', 'Zustand'],
-    gradient: 'from-blue-600/20 to-cyan-600/20',
-    accent: 'bg-blue-500',
-  },
-  {
-    title: 'Portfolio & Blog',
-    description:
-      'Content-first personal site with MDX blog, dark mode, and optimized Core Web Vitals.',
-    tags: ['Next.js', 'MDX', 'Framer Motion', 'Vercel'],
-    gradient: 'from-emerald-600/20 to-teal-600/20',
-    accent: 'bg-emerald-500',
-  },
-  {
-    title: '3D Product Showcase',
-    description:
-      'Interactive 3D product viewer with Spline integration and animated feature highlights.',
-    tags: ['Next.js', 'Spline', 'Framer Motion', 'GSAP'],
-    gradient: 'from-orange-600/20 to-yellow-600/20',
-    accent: 'bg-orange-500',
-  },
+const tags = [
+  ['Next.js', 'TypeScript', 'Tailwind', 'Stripe'],
+  ['React', 'Recharts', 'shadcn/ui', 'Zustand'],
+  ['Next.js', 'MDX', 'Framer Motion', 'Vercel'],
+  ['Next.js', 'Spline', 'Framer Motion', 'GSAP'],
 ]
 
+const gradients = [
+  'from-violet-600/20 to-pink-600/20',
+  'from-blue-600/20 to-cyan-600/20',
+  'from-emerald-600/20 to-teal-600/20',
+  'from-orange-600/20 to-yellow-600/20',
+]
+
+const accents = ['bg-violet-500', 'bg-blue-500', 'bg-emerald-500', 'bg-orange-500']
+
 export function Work() {
+  const { lang } = useLang()
+  const tr = t[lang].work
+
   return (
     <section id="work" className="bg-black py-28">
       <div className="container max-w-6xl mx-auto px-6">
@@ -50,28 +36,26 @@ export function Work() {
           className="text-center mb-16"
         >
           <p className="text-violet-400 text-sm font-medium tracking-widest uppercase mb-3">
-            Featured work
+            {tr.label}
           </p>
-          <h2 className="text-4xl font-bold text-white">
-            Projects I&apos;ve built
-          </h2>
+          <h2 className="text-4xl font-bold text-white">{tr.heading}</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p, i) => (
+          {tr.projects.map((p, i) => (
             <motion.div
               key={p.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative group p-7 rounded-3xl border border-white/5 bg-gradient-to-br ${p.gradient} overflow-hidden hover:border-white/10 transition-colors`}
+              className={`relative group p-7 rounded-3xl border border-white/5 bg-gradient-to-br ${gradients[i]} overflow-hidden hover:border-white/10 transition-colors`}
             >
-              <div className={`w-2 h-2 rounded-full ${p.accent} mb-5`} />
+              <div className={`w-2 h-2 rounded-full ${accents[i]} mb-5`} />
               <h3 className="text-xl font-semibold text-white mb-3">{p.title}</h3>
               <p className="text-neutral-400 text-sm leading-relaxed mb-5">{p.description}</p>
               <div className="flex flex-wrap gap-2 mb-5">
-                {p.tags.map((tag) => (
+                {tags[i].map((tag) => (
                   <span
                     key={tag}
                     className="text-xs px-3 py-1 rounded-full bg-white/5 text-neutral-400 border border-white/5"
@@ -82,10 +66,10 @@ export function Work() {
               </div>
               <div className="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button className="flex items-center gap-1.5 text-sm text-neutral-300 hover:text-white transition-colors">
-                  <GitBranch size={14} /> Source
+                  <GitBranch size={14} /> {tr.source}
                 </button>
                 <button className="flex items-center gap-1.5 text-sm text-neutral-300 hover:text-white transition-colors">
-                  <ExternalLink size={14} /> Live
+                  <ExternalLink size={14} /> {tr.live}
                 </button>
               </div>
             </motion.div>
